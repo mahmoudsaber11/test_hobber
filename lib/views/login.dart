@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_/login/presentation/cubit/email_cubit.dart';
-import 'package:test_/login/presentation/cubit/email_state.dart';
+import 'package:test_/controller/cubit/email_cubit.dart';
+import 'package:test_/controller/cubit/email_state.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});

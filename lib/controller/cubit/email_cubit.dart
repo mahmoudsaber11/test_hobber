@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_/login/data/repo/email_repo_impl.dart';
-import 'package:test_/login/presentation/cubit/email_state.dart';
+import 'package:test_/controller/repo/email_repo_impl.dart';
+import 'package:test_/controller/cubit/email_state.dart';
 
 class EmailCubit extends Cubit<EmailState> {
   final EmailRepository repository;

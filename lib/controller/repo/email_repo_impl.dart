@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:test_/core/api/end_points.dart';
 
-import 'package:test_/login/data/repo/email_repo.dart';
-import 'package:test_/login/model/email_model.dart';
+import 'package:test_/controller/repo/email_repo.dart';
+import 'package:test_/models/email_model.dart';
 
 class EmailRepository implements EmailRepo {
   final Dio _dio = Dio();

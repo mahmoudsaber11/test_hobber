@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:test_/login/model/email_model.dart';
+import 'package:test_/models/email_model.dart';
 
 abstract class EmailState extends Equatable {
   const EmailState();
