@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:test_/core/api/end_points.dart';
 
 import 'package:test_/controller/repo/email_repo.dart';
+import 'package:test_/core/api/entities/edit_params.dart.dart';
+import 'package:test_/core/api/entities/post_params.dart';
 import 'package:test_/models/email_model.dart';
 
 class EmailRepository implements EmailRepo {
@@ -15,10 +17,8 @@ class EmailRepository implements EmailRepo {
       );
       if (response.statusCode == 200) {
         final List<dynamic> emailsJson = response.data;
-        print(emailsJson);
         final List<Email> emails =
             emailsJson.map((json) => Email.fromJson(json)).toList();
-        print(emails);
         return emails;
       } else {
         throw Exception('Failed to fetch emails');
@@ -29,10 +29,11 @@ class EmailRepository implements EmailRepo {
   }
 
   @override
-  Future<void> deleteEmail(int emailId) async {
+  Future<void> deleteEmail(int emailId, String email) async {
     try {
-      final response =
-          await _dio.delete('${EndPoints.deleteEmail}?emailId=$emailId');
+      final response = await _dio.delete(
+          "${EndPoints.deleteEmail}?email=$email&id=$emailId",
+          queryParameters: {"email": email, "id": emailId});
       if (response.statusCode != 200) {
         throw Exception('Failed to delete email');
       }
@@ -42,14 +43,15 @@ class EmailRepository implements EmailRepo {
   }
 
   @override
-  Future<void> postEmail(String email) async {
+  Future<void> postEmail({required PostParams postParams}) async {
     try {
-      final response = await _dio.post(
-        EndPoints.postEmail,
-        data: {'email': email},
-      );
+      final response = await _dio.post(EndPoints.postEmail, data: {
+        "email": postParams.email,
+        "description": postParams.description,
+        "title": postParams.title,
+        "img_link": postParams.imgLink
+      });
       if (response.statusCode == 200) {
-        print('Email uploaded successfully');
       } else {
         throw Exception('Failed to post email');
       }
@@ -59,13 +61,15 @@ class EmailRepository implements EmailRepo {
   }
 
   @override
-  Future<void> editEmail(
-    int emailId,
-    String email,
-  ) async {
+  Future<void> editEmail({required EditParams editParams}) async {
     try {
-      final response = await _dio
-          .put('${EndPoints.editEmail}?emailId=$emailId', data: {email: email});
+      final response = await _dio.put(EndPoints.editEmail, data: {
+        "email": editParams.email,
+        "id": editParams.id,
+        "description": editParams.description,
+        "title": editParams.title,
+        "img_link": editParams.imgLink
+      });
       if (response.statusCode != 200) {
         throw Exception('Failed to edit email');
       }

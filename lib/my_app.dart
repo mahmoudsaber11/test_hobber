@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_/controller/repo/email_repo_impl.dart';
 import 'package:test_/controller/cubit/email_cubit.dart';
-import 'package:test_/views/login.dart';
+import 'package:test_/views/home_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: const MyHomePage(),
+        home: const HomeView(),
       ),
     );
   }
