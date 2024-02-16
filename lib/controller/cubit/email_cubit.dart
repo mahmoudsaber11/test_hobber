@@ -12,6 +12,9 @@ class EmailCubit extends Cubit<EmailState> {
   }
 
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController imgLinkController = TextEditingController();
   late final GlobalKey<FormState> formKey;
 
   void _initFormAttributes() {
@@ -25,6 +28,9 @@ class EmailCubit extends Cubit<EmailState> {
 
   void _disposeController() {
     emailController.dispose();
+    titleController.dispose();
+    descriptionController.dispose();
+    imgLinkController.dispose();
   }
 
   Future<void> getEmails() async {
@@ -60,15 +66,15 @@ class EmailCubit extends Cubit<EmailState> {
     }
   }
 
-  Future<void> editEmail({required EditParams editParams}) async {
+  Future<void> editEmail(
+      {required String email,
+      required String description,
+      required String title,
+      required String imglink,
+      required int id}) async {
     emit(EmailLoading());
     try {
-      await repository.editEmail(
-          editParams: EditParams(
-              email: editParams.email,
-              description: editParams.description,
-              title: editParams.title,
-              imgLink: editParams.imgLink));
+      await repository.editEmail(email, description, title, imglink, id);
       emit(EmailEdit());
     } catch (e) {
       emit(EmailError('Failed to edit email: $e'));

@@ -61,15 +61,12 @@ class EmailRepository implements EmailRepo {
   }
 
   @override
-  Future<void> editEmail({required EditParams editParams}) async {
+  Future<void> editEmail(String email, String description, String title,
+      String imglink, int id) async {
     try {
-      final response = await _dio.put(EndPoints.editEmail, data: {
-        "email": editParams.email,
-        "id": editParams.id,
-        "description": editParams.description,
-        "title": editParams.title,
-        "img_link": editParams.imgLink
-      });
+      final response = await _dio.put(
+        "${EndPoints.editEmail}?email=$email&id=$id&description=$description&img_link=$imglink&title=$title",
+      );
       if (response.statusCode != 200) {
         throw Exception('Failed to edit email');
       }

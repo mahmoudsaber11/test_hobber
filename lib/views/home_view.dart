@@ -36,9 +36,26 @@ class HomeView extends StatelessWidget {
             builder: (context) {
               return AlertDialog(
                 title: const Text('Add Email'),
-                content: TextField(
-                  controller: cubit.emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
+                content: Column(
+                  children: [
+                    TextField(
+                      controller: cubit.emailController,
+                      decoration: const InputDecoration(labelText: 'Email'),
+                    ),
+                    TextField(
+                      controller: cubit.titleController,
+                      decoration: const InputDecoration(labelText: 'Title'),
+                    ),
+                    TextField(
+                      controller: cubit.descriptionController,
+                      decoration:
+                          const InputDecoration(labelText: 'Description'),
+                    ),
+                    TextField(
+                      controller: cubit.imgLinkController,
+                      decoration: const InputDecoration(labelText: 'ImgLink'),
+                    ),
+                  ],
                 ),
                 actions: [
                   TextButton(
@@ -64,9 +81,9 @@ class HomeView extends StatelessWidget {
           .postEmail(
               postParams: PostParams(
                   email: cubit.emailController.text,
-                  title: "this email",
-                  description: "my email",
-                  imgLink: "my img"))
+                  title: cubit.titleController.text,
+                  description: cubit.descriptionController.text,
+                  imgLink: cubit.imgLinkController.text))
           .then((value) {
         cubit.getEmails();
         Navigator.of(context).pop();

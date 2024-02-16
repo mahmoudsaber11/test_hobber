@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_/controller/cubit/email_cubit.dart';
 import 'package:test_/controller/cubit/email_state.dart';
-import 'package:test_/core/api/entities/edit_params.dart.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -32,12 +31,11 @@ class HomeViewBody extends StatelessWidget {
                 leading: IconButton(
                     onPressed: () {
                       cubit.editEmail(
-                          editParams: EditParams(
-                              email: email.email!,
-                              title: "sddd email",
-                              description: "ssmy email",
-                              imgLink: "mssy img",
-                              id: 44));
+                          id: 610,
+                          email: cubit.emailController.text,
+                          description: "fdsfdsf",
+                          title: "fsdfdsfsf",
+                          imglink: "fdsfsdffs");
                     },
                     icon: const Icon(Icons.edit)),
                 trailing: IconButton(
