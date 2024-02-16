@@ -2,8 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:test_/core/api/end_points.dart';
 
 import 'package:test_/controller/repo/email_repo.dart';
-import 'package:test_/core/api/entities/edit_params.dart.dart';
-import 'package:test_/core/api/entities/post_params.dart';
+import 'package:test_/core/entities/post_params.dart';
 import 'package:test_/models/email_model.dart';
 
 class EmailRepository implements EmailRepo {

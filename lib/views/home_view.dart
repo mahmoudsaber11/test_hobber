@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_/controller/cubit/email_cubit.dart';
-import 'package:test_/controller/cubit/email_state.dart';
-import 'package:test_/core/api/entities/post_params.dart';
+import 'package:test_/controller/cubit/email_cubit/email_cubit.dart';
+import 'package:test_/controller/cubit/email_cubit/email_state.dart';
+import 'package:test_/core/entities/post_params.dart';
 import 'package:test_/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -87,9 +87,7 @@ class HomeView extends StatelessWidget {
           .then((value) {
         cubit.getEmails();
         Navigator.of(context).pop();
-      }).catchError((error) {
-        print('Failed to add email: $error');
-      });
+      }).catchError((error) {});
     }
   }
 }

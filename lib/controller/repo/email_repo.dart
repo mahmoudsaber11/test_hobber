@@ -1,4 +1,4 @@
-import 'package:test_/core/api/entities/post_params.dart';
+import 'package:test_/core/entities/post_params.dart';
 import 'package:test_/models/email_model.dart';
 
 abstract class EmailRepo {

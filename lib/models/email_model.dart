@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Email extends Equatable {
-  final int? id;
+  final int id;
   final String? email;
   final String? message;
   final String? title;

@@ -21,8 +21,6 @@ class EmailLoaded extends EmailState {
   List<Object> get props => [emails];
 }
 
-class DeleteEmails extends EmailState {}
-
 class EmailPosted extends EmailState {}
 
 class EmailEdit extends EmailState {}
